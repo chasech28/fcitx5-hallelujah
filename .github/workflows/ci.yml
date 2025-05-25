@@ -52,12 +52,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: fcitx5-hallelujah
-
+    
       - name: Build and Install fcitx5-hallelujah
         uses: fcitx/github-actions@cmake
         with:
           path: fcitx5-hallelujah
-
+          
+      - name: Upload fcitx5-hallelujah artifact
+        uses: actions/upload-artifact@v4 
+        with: 
+          name: fcitx5-hallelujah
+          path: fcitx5-hallelujah
+      
       - name: Test
         run:
           ctest --output-on-failure --test-dir fcitx5-hallelujah/build
